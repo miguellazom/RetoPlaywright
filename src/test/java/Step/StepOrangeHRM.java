@@ -22,6 +22,11 @@ public class StepOrangeHRM {
     private final Locator licenseDate;
     private final Locator checkBoxMale;
     private final Locator savePersonDetails;
+    private final Locator filter;
+    private final Locator searchButton;
+    private final Locator listUser;
+    private String name;
+
 
 
     public StepOrangeHRM(Page page) {
@@ -40,6 +45,9 @@ public class StepOrangeHRM {
         this.licenseDate = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[2]/div[2]/div[2]/div/div[2]/div/div/input");
         this.checkBoxMale = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[3]/div[2]/div[2]/div/div[2]/div[1]/div[2]/div/label/input");
         this.savePersonDetails = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[4]/button");
+        this.filter = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[1]/div/div[2]/div/div/input");
+        this.searchButton = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]");
+        this.listUser = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[1]");
     }
 
     public void navigate() {
@@ -62,6 +70,7 @@ public class StepOrangeHRM {
         middleName.fill(mname);
         lasName.fill(lname);
         regiterSubmit.click();
+        this.name=fname+" "+mname+" "+lname+" ";
         System.out.println("Paso correctamente agregar usuario");
     }
 
@@ -70,5 +79,13 @@ public class StepOrangeHRM {
         licenseNum.fill(licensN);
         licenseDate.fill(licensD);
         savePersonDetails.click();
+    }
+
+    public void validateEmployeeList(){
+        addUser.click();
+        assertThat(page).hasURL("https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee");
+        filter.fill(name);
+        searchButton.click();
+        assertThat(listUser).isVisible();
     }
 }
