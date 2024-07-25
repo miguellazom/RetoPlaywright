@@ -82,8 +82,7 @@ public class StepOrangeHRM {
     }
 
     public void validateEmployeeList(){
-        addUser.click();
-        assertThat(page).hasURL("https://opensource-demo.orangehrmlive.com/web/index.php/pim/addEmployee");
+        page.navigate("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList");
         filter.fill(name);
         searchButton.click();
         assertThat(listUser).isVisible();
