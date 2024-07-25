@@ -47,7 +47,7 @@ public class StepOrangeHRM {
         this.savePersonDetails = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[2]/div[1]/form/div[4]/button");
         this.filter = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[1]/div/div[2]/div/div/input");
         this.searchButton = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]");
-        this.listUser = page.locator("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div[1]");
+        this.listUser = page.locator("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.orangehrm-paper-container > div.orangehrm-container > div > div.oxd-table-body > div > div");
     }
 
     public void navigate() {
@@ -75,7 +75,7 @@ public class StepOrangeHRM {
     }
 
     public void addDetails(String otherID,String licensN,String licensD){
-        pim.fill(otherID);
+        otherId.fill(otherID);
         licenseNum.fill(licensN);
         licenseDate.fill(licensD);
         savePersonDetails.click();
