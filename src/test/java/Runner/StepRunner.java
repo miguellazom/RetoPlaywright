@@ -51,6 +51,7 @@ public class StepRunner {
         searchPage.login("Admin","admin123");
         searchPage.addUsers("Juan","Luis","Garcia");
         searchPage.addDetails("333","123456","2025-12-30");
+        searchPage.validateEmployeeList();
     }
 
 }

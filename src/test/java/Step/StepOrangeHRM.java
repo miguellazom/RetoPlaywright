@@ -75,7 +75,7 @@ public class StepOrangeHRM {
     }
 
     public void addDetails(String otherID,String licensN,String licensD){
-        otherId.fill(otherID);
+        pim.fill(otherID);
         licenseNum.fill(licensN);
         licenseDate.fill(licensD);
         savePersonDetails.click();
